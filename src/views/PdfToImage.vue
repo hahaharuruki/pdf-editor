@@ -1,0 +1,212 @@
+<template>
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">PDF JPEG 変換</h1>
+    <p class="text-center">各PDFページをJPGに変換する、またはPDFに含まれるすべての画像を抽出します。</p>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <div class="mb-3">
+              <input type="file" class="form-control d-none" id="pdfFile" @change="onFileChange" accept="application/pdf" ref="fileInput" />
+              <button class="btn btn-danger w-100" @click="triggerFileInput">1. PDFファイルを選択</button>
+            </div>
+            <div v-if="pdfData">
+              <div class="mb-3">
+                <label for="scale" class="form-label">解像度を選択</label>
+                <input type="range" v-model.number="scale" class="form-range" id="scale" min="1" max="3" step="0.1" />
+                <div class="d-flex justify-content-between">
+                  <span>低</span>
+                  <span class="text-center w-100">標準</span>
+                  <span class="text-end w-100">高</span>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">選択されたファイル: {{ selectedFileName }}</label>
+                <div class="text-center">
+                  <canvas ref="thumbnailCanvas" style="max-width: 100%; height: auto;"></canvas>
+                </div>
+              </div>
+              <button @click="convertToJPEG" class="btn btn-primary w-100" :disabled="!pdfData">2. 変換する</button>
+            </div>
+            <button v-if="images.length > 0" @click="downloadAllImages" class="btn btn-secondary w-100 mt-2">3. 全ページを一括ダウンロード</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-4" id="output">
+      <div class="col-12" v-for="(image, index) in images" :key="index">
+        <div class="card mb-3">
+          <div class="card-body text-center">
+            <img :src="image.src" :alt="'Page ' + (index + 1)" class="img-fluid" />
+            <a :href="image.src" :download="getDownloadFileName(index)" class="btn btn-secondary mt-2">ページ{{ index + 1 }}をダウンロード</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import { getDocument, GlobalWorkerOptions } from 'pdfjs-dist/legacy/build/pdf';
+import JSZip from 'jszip';
+import { saveAs } from 'file-saver';
+
+GlobalWorkerOptions.workerSrc = `${process.env.BASE_URL}pdf.worker.mjs`;
+
+export default {
+  data() {
+    return {
+      pdfData: null,
+      images: [],
+      scale: 1.5, // デフォルトのスケール値
+      selectedFileName: '', // 選択されたファイル名を格納
+    };
+  },
+  mounted() {
+    window.addEventListener('dragover', this.onDragOver);
+    window.addEventListener('drop', this.onDrop);
+    window.addEventListener('dragleave', this.onDragLeave);
+  },
+  beforeUnmount() {
+    window.removeEventListener('dragover', this.onDragOver);
+    window.removeEventListener('drop', this.onDrop);
+    window.removeEventListener('dragleave', this.onDragLeave);
+  },
+  methods: {
+    triggerFileInput() {
+      this.$refs.fileInput.click();
+    },
+    onFileChange(event) {
+      const file = event.target.files[0];
+      if (file) {
+        this.readFile(file);
+      }
+    },
+    onDrop(event) {
+      event.preventDefault();
+      const file = event.dataTransfer.files[0];
+      if (file) {
+        this.readFile(file);
+      }
+    },
+    onDragOver(event) {
+      event.preventDefault();
+    },
+    onDragLeave(event) {
+      event.preventDefault();
+    },
+    readFile(file) {
+      if (file.type === 'application/pdf') {
+        this.selectedFileName = file.name; // 選択されたファイル名を保存
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          // PDFデータのコピーを作成
+          this.pdfData = new Uint8Array(e.target.result.slice(0));
+          this.generateThumbnail(); // サムネイル生成
+        };
+        reader.readAsArrayBuffer(file);
+      } else {
+        alert('PDFファイルを選択してください。');
+      }
+    },
+    async generateThumbnail() {
+      if (!this.pdfData) return;
+
+      const cMapUrl = `${process.env.BASE_URL}cmaps/`;
+      const cMapPacked = true;
+
+      const loadingTask = getDocument({ 
+        data: this.pdfData.slice(0), // データのコピーを渡す
+        cMapUrl,
+        cMapPacked
+      });
+
+      const pdf = await loadingTask.promise;
+      const page = await pdf.getPage(1);
+      const viewport = page.getViewport({ scale: 0.5 }); // サムネイル用のスケール
+
+      const canvas = this.$refs.thumbnailCanvas;
+      const context = canvas.getContext('2d');
+
+      const outputScale = Math.min(canvas.clientWidth / viewport.width, canvas.clientHeight / viewport.height);
+      canvas.width = viewport.width * outputScale;
+      canvas.height = viewport.height * outputScale;
+
+      const transform = [outputScale, 0, 0, outputScale, 0, 0];
+      const renderContext = {
+        canvasContext: context,
+        transform,
+        viewport,
+      };
+
+      await page.render(renderContext).promise;
+    },
+    async convertToJPEG() {
+      if (!this.pdfData) return;
+
+      const cMapUrl = `${process.env.BASE_URL}cmaps/`;
+      const cMapPacked = true;
+
+      const loadingTask = getDocument({ 
+        data: this.pdfData.slice(0), // データのコピーを渡す
+        cMapUrl,
+        cMapPacked
+      });
+
+      const pdf = await loadingTask.promise;
+      this.images = []; // 以前の結果をクリア
+
+      for (let i = 0; i < pdf.numPages; i++) {
+        const page = await pdf.getPage(i + 1);
+        const viewport = page.getViewport({ scale: this.scale });
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+        canvas.height = viewport.height;
+        canvas.width = viewport.width;
+
+        await page.render({ canvasContext: context, viewport: viewport }).promise;
+
+        const imgDataUrl = canvas.toDataURL('image/jpeg');
+        this.images.push({ src: imgDataUrl });
+      }
+    },
+    getDownloadFileName(index) {
+      const baseName = this.selectedFileName.replace('.pdf', '');
+      return `${baseName}_ページ${index + 1}.jpeg`;
+    },
+    async downloadAllImages() {
+      if (this.images.length === 0) return;
+
+      const zip = new JSZip();
+      for (let i = 0; i < this.images.length; i++) {
+        const baseName = this.selectedFileName.replace('.pdf', '');
+        const fileName = `${baseName}_ページ${i + 1}.jpeg`;
+        const img = await fetch(this.images[i].src);
+        const blob = await img.blob();
+        zip.file(fileName, blob);
+      }
+      const content = await zip.generateAsync({ type: 'blob' });
+      saveAs(content, `${this.selectedFileName.replace('.pdf', '')}.zip`);
+    }
+  },
+};
+</script>
+
+<style scoped>
+.container {
+  max-width: 800px;
+}
+.card {
+  border-radius: 10px;
+}
+#output {
+  margin-top: 20px;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body {
+  background-color: #f8f9fa; /* 画像の色を指定 */
+}
+</style>

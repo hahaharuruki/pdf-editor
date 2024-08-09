@@ -1,26 +1,31 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <nav>
+      <ul>
+        <li><router-link to="/">Home</router-link></li>
+        <li><router-link to="/pdf-to-image">PDF to JPEG 変換</router-link></li>
+        <li><router-link to="/merge-pdf">PDF 結合</router-link></li>
+      </ul>
+    </nav>
+    <router-view />
+  </div>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
-</script>
-
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+nav {
+  background-color: #333;
+  padding: 1rem;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+nav ul li {
+  display: inline;
+}
+nav ul li a {
+  color: white;
+  text-decoration: none;
 }
 </style>
