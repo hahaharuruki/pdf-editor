@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # pdf-editor
 
 ## Project setup
@@ -22,3 +23,6 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+=======
+# pdf-editor
+>>>>>>> 57f698221270ee7a4662977cc08f34ade0a3807d

@@ -1,7 +1,7 @@
 <template>
   <div class="container mt-5">
-    <h1 class="text-center mb-4">PDF JPEG 変換</h1>
-    <p class="text-center">各PDFページをJPGに変換する、またはPDFに含まれるすべての画像を抽出します。</p>
+    <h1 class="text-center mb-4">PDF 画像 変換</h1>
+    <p class="text-center">各PDFページを画像に変換します。JPEG、PNG、BMPに変換できます。すべてブラウザ上で処理されるので、サーバーを含めてファイルデータが外部に送信されることはありません。ファイルをドラッグ&ドロップしてください。</p>
     <div class="row justify-content-center">
       <div class="col-md-6">
         <div class="card shadow-sm">
@@ -21,12 +21,20 @@
                 </div>
               </div>
               <div class="mb-3">
+                <label for="format" class="form-label">画像形式を選択</label>
+                <select v-model="selectedFormat" class="form-select" id="format">
+                  <option value="image/jpeg">JPEG</option>
+                  <option value="image/png">PNG</option>
+                  <option value="image/bmp">BMP</option>
+                </select>
+              </div>
+              <div class="mb-3">
                 <label class="form-label">選択されたファイル: {{ selectedFileName }}</label>
                 <div class="text-center">
                   <canvas ref="thumbnailCanvas" style="max-width: 100%; height: auto;"></canvas>
                 </div>
               </div>
-              <button @click="convertToJPEG" class="btn btn-primary w-100" :disabled="!pdfData">2. 変換する</button>
+              <button @click="convertToImages" class="btn btn-primary w-100" :disabled="!pdfData">2. 変換する</button>
             </div>
             <button v-if="images.length > 0" @click="downloadAllImages" class="btn btn-secondary w-100 mt-2">3. 全ページを一括ダウンロード</button>
           </div>
@@ -60,6 +68,7 @@ export default {
       images: [],
       scale: 1.5, // デフォルトのスケール値
       selectedFileName: '', // 選択されたファイル名を格納
+      selectedFormat: 'image/jpeg', // デフォルトの画像形式
     };
   },
   mounted() {
@@ -141,7 +150,7 @@ export default {
 
       await page.render(renderContext).promise;
     },
-    async convertToJPEG() {
+    async convertToImages() {
       if (!this.pdfData) return;
 
       const cMapUrl = `${process.env.BASE_URL}cmaps/`;
@@ -166,21 +175,23 @@ export default {
 
         await page.render({ canvasContext: context, viewport: viewport }).promise;
 
-        const imgDataUrl = canvas.toDataURL('image/jpeg');
+        const imgDataUrl = canvas.toDataURL(this.selectedFormat);
         this.images.push({ src: imgDataUrl });
       }
     },
     getDownloadFileName(index) {
       const baseName = this.selectedFileName.replace('.pdf', '');
-      return `${baseName}_ページ${index + 1}.jpeg`;
+      const extension = this.selectedFormat.split('/')[1];
+      return `${baseName}_ページ${index + 1}.${extension}`;
     },
     async downloadAllImages() {
       if (this.images.length === 0) return;
 
       const zip = new JSZip();
+      const extension = this.selectedFormat.split('/')[1];
       for (let i = 0; i < this.images.length; i++) {
         const baseName = this.selectedFileName.replace('.pdf', '');
-        const fileName = `${baseName}_ページ${i + 1}.jpeg`;
+        const fileName = `${baseName}_ページ${i + 1}.${extension}`;
         const img = await fetch(this.images[i].src);
         const blob = await img.blob();
         zip.file(fileName, blob);
@@ -207,6 +218,6 @@ img {
   height: auto;
 }
 body {
-  background-color: #f8f9fa; /* 画像の色を指定 */
+  background-color: #f8f9fa;
 }
 </style>

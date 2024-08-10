@@ -1,6 +1,7 @@
 <template>
     <div class="container mt-5" @dragover.prevent @drop="onDrop">
       <h1 class="text-center mb-4">PDF 結合</h1>
+      <p class="text-center">複数のPDFファイルを一つのPDFファイルに結合します。すべてブラウザ上で処理されるので、サーバーを含めてファイルデータが外部に送信されることはありません。ファイルをドラッグ&ドロップしてください。</p>
       <div class="row justify-content-center">
         <div class="col-md-6">
           <div class="card shadow-sm">
