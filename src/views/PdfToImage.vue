@@ -66,9 +66,9 @@ export default {
     return {
       pdfData: null,
       images: [],
-      scale: 1.5, // デフォルトのスケール値
-      selectedFileName: '', // 選択されたファイル名を格納
-      selectedFormat: 'image/jpeg', // デフォルトの画像形式
+      scale: 1.5,
+      selectedFileName: '',
+      selectedFormat: 'image/jpeg',
     };
   },
   mounted() {
@@ -106,12 +106,11 @@ export default {
     },
     readFile(file) {
       if (file.type === 'application/pdf') {
-        this.selectedFileName = file.name; // 選択されたファイル名を保存
+        this.selectedFileName = file.name;
         const reader = new FileReader();
         reader.onload = (e) => {
-          // PDFデータのコピーを作成
           this.pdfData = new Uint8Array(e.target.result.slice(0));
-          this.generateThumbnail(); // サムネイル生成
+          this.generateThumbnail();
         };
         reader.readAsArrayBuffer(file);
       } else {
@@ -125,14 +124,14 @@ export default {
       const cMapPacked = true;
 
       const loadingTask = getDocument({ 
-        data: this.pdfData.slice(0), // データのコピーを渡す
+        data: this.pdfData.slice(0),
         cMapUrl,
         cMapPacked
       });
 
       const pdf = await loadingTask.promise;
       const page = await pdf.getPage(1);
-      const viewport = page.getViewport({ scale: 0.5 }); // サムネイル用のスケール
+      const viewport = page.getViewport({ scale: 0.5 });
 
       const canvas = this.$refs.thumbnailCanvas;
       const context = canvas.getContext('2d');
@@ -157,13 +156,13 @@ export default {
       const cMapPacked = true;
 
       const loadingTask = getDocument({ 
-        data: this.pdfData.slice(0), // データのコピーを渡す
+        data: this.pdfData.slice(0),
         cMapUrl,
         cMapPacked
       });
 
       const pdf = await loadingTask.promise;
-      this.images = []; // 以前の結果をクリア
+      this.images = [];
 
       for (let i = 0; i < pdf.numPages; i++) {
         const page = await pdf.getPage(i + 1);

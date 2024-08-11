@@ -16,11 +16,12 @@
           <li><router-link to="/watermark-pdf">PDFに透かしの追加</router-link></li>
           <li><router-link to="/rotate-pdf">PDFの回転</router-link></li>
           <li><router-link to="/page-number-pdf">PDFにページ番号挿入</router-link></li>
-          <li><router-link to="/sign-pdf">PDFに署名</router-link></li>
+          <!-- <li><router-link to="/sign-pdf">PDFに署名</router-link></li> -->
         </ul>
       </nav>
     </header>
     <router-view />
+    <div class="content-spacing"></div>
     <footer class="footer">
       <div class="footer-container">
         <div class="footer-column">
@@ -28,7 +29,7 @@
           <ul>
             <li><router-link to="/">ホーム</router-link></li>
             <li><router-link to="/privacy-policy">プライバシーポリシー</router-link></li>
-            <li><router-link to="/faq">よくある質問</router-link></li>
+            <li><router-link to="/faq-page">よくある質問</router-link></li>
           </ul>
         </div>
         <div class="footer-column">
@@ -41,7 +42,7 @@
         <div class="footer-column">
           <h5>お問い合わせ</h5>
           <ul>
-            <li><router-link to="/contact">お問い合わせページ</router-link></li>
+            <li><router-link to="/contact-page">お問い合わせページ</router-link></li>
           </ul>
         </div>
         <div class="footer-column">
@@ -118,6 +119,10 @@ nav ul li a {
 
 router-view {
   flex: 1;
+}
+
+.content-spacing {
+  margin-top: 40px; /* ここで空間の高さを調整します */
 }
 
 .footer {

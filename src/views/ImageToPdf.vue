@@ -90,7 +90,7 @@ export default {
         } else if (file.type === 'image/png') {
           image = await pdfDoc.embedPng(arrayBuffer);
         } else if (file.type === 'image/bmp') {
-          image = await pdfDoc.embedPng(arrayBuffer); // pdf-lib は BMP を直接サポートしていないため、PNG に変換
+          image = await pdfDoc.embedPng(arrayBuffer);
         }
         const page = pdfDoc.addPage([image.width, image.height]);
         page.drawImage(image, {

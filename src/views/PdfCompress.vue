@@ -31,7 +31,7 @@
         selectedFileName: '',
         pdfData: null,
         compressedPdf: null,
-        compressedPdfReady: false, // 圧縮が完了したかどうかを示すフラグ
+        compressedPdfReady: false,
       };
     },
     methods: {
@@ -73,12 +73,12 @@
         pdfDoc.setKeywords([]);
         pdfDoc.setProducer('');
         pdfDoc.setCreator('');
-        pdfDoc.setCreationDate(new Date()); // 現在の日付に設定
-        pdfDoc.setModificationDate(new Date()); // 現在の日付に設定
+        pdfDoc.setCreationDate(new Date());
+        pdfDoc.setModificationDate(new Date());
   
         const pdfBytes = await pdfDoc.save();
         this.compressedPdf = new Blob([pdfBytes], { type: 'application/pdf' });
-        this.compressedPdfReady = true; // 圧縮が完了したことを示す
+        this.compressedPdfReady = true;
       },
       downloadCompressedPdf() {
         const url = URL.createObjectURL(this.compressedPdf);

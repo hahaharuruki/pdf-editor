@@ -34,7 +34,7 @@
 <script>
 import { degrees, PDFDocument, rgb } from 'pdf-lib';
 import fontkit from '@pdf-lib/fontkit';
-import NotoSansJP from '@/assets/fonts/NotoSansJP-Regular.ttf'; // カスタムフォントのパスを指定
+import NotoSansJP from '@/assets/fonts/NotoSansJP-Regular.ttf';
 
 export default {
   data() {
@@ -43,7 +43,7 @@ export default {
       pdfData: null,
       watermarkText: '',
       pdfReady: false,
-      pdfPreviewUrl: '', // プレビューURLを格納する変数
+      pdfPreviewUrl: '',
     };
   },
   mounted() {
@@ -119,7 +119,7 @@ export default {
 
       const pdfBytes = await pdfDoc.save();
       this.pdfData = new Blob([pdfBytes], { type: 'application/pdf' });
-      this.pdfPreviewUrl = URL.createObjectURL(this.pdfData); // プレビューURLを設定
+      this.pdfPreviewUrl = URL.createObjectURL(this.pdfData);
       this.pdfReady = true;
     },
     downloadPdf() {

@@ -1,7 +1,7 @@
 <template>
   <div class="container mt-5" @dragover.prevent @drop.prevent="onDrop">
     <h1 class="text-center mb-4">PDFに署名</h1>
-    <p class="text-center">PDFファイル。すべてブラウザ上で処理されるので、サーバーを含めてファイルデータが外部に送信されることはありません。ファイルをドラッグ&ドロップしてください。</p>
+    <p class="text-center">PDFファイルに電子署名を行います。すべてブラウザ上で処理されるので、サーバーを含めてファイルデータが外部に送信されることはありません。ファイルをドラッグ&ドロップしてください。</p>
     <div class="row justify-content-center">
       <div class="col-md-6">
         <div class="card shadow-sm">
@@ -17,6 +17,16 @@
               <label for="signature" class="form-label">署名のテキスト:</label>
               <input type="text" id="signature" v-model="signatureText" class="form-control" />
             </div>
+            <div class="mb-3" v-if="selectedFileName">
+              <label for="fontSize" class="form-label">フォントサイズ:</label>
+              <input type="number" id="fontSize" v-model.number="fontSize" class="form-control" />
+            </div>
+            <div v-if="pdfPreviewSrc">
+              <div class="pdf-preview-container" @mousedown="onMouseDown" @mousemove="onMouseMove" @mouseup="onMouseUp">
+                <img :src="pdfPreviewSrc" alt="PDF Preview" class="pdf-preview" />
+                <div v-if="isDragging" class="signature-preview" :style="signatureStyle">{{ signatureText }}</div>
+              </div>
+            </div>
             <button v-if="selectedFileName && !pdfReady" @click="addSignature" class="btn btn-primary w-100">2. 署名を追加する</button>
             <button v-if="pdfReady" @click="downloadPdf" class="btn btn-secondary w-100 mt-2">3. ダウンロード</button>
           </div>
@@ -29,7 +39,10 @@
 <script>
 import { PDFDocument, rgb } from 'pdf-lib';
 import fontkit from '@pdf-lib/fontkit';
-import NotoSansJP from '@/assets/fonts/NotoSansJP-Regular.ttf'; // フォントファイルのパス
+import NotoSansJP from '@/assets/fonts/NotoSansJP-Regular.ttf';
+import { getDocument, GlobalWorkerOptions } from 'pdfjs-dist/legacy/build/pdf';
+
+GlobalWorkerOptions.workerSrc = `${process.env.BASE_URL}pdf.worker.mjs`;
 
 export default {
   data() {
@@ -39,6 +52,17 @@ export default {
       signatureText: '',
       pdfReady: false,
       signedPdf: null,
+      pdfPreviewSrc: null,
+      isDragging: false,
+      signatureStyle: {
+        left: '0px',
+        top: '0px',
+      },
+      startX: 0,
+      startY: 0,
+      x: 0,
+      y: 0,
+      fontSize: 24,
     };
   },
   mounted() {
@@ -75,30 +99,63 @@ export default {
       const reader = new FileReader();
       reader.onload = (e) => {
         this.pdfData = new Uint8Array(e.target.result);
+        this.loadPdfPreview();
       };
       reader.readAsArrayBuffer(file);
     },
+    async loadPdfPreview() {
+      const loadingTask = getDocument({ data: this.pdfData });
+      const pdf = await loadingTask.promise;
+      const page = await pdf.getPage(1);
+      const viewport = page.getViewport({ scale: 1.5 });
+      const canvas = document.createElement('canvas');
+      const context = canvas.getContext('2d');
+      canvas.height = viewport.height;
+      canvas.width = viewport.width;
+
+      await page.render({ canvasContext: context, viewport }).promise;
+      this.pdfPreviewSrc = canvas.toDataURL();
+    },
+    onMouseDown(event) {
+      this.isDragging = true;
+      this.startX = event.clientX - parseFloat(this.signatureStyle.left);
+      this.startY = event.clientY - parseFloat(this.signatureStyle.top);
+    },
+    onMouseMove(event) {
+      if (this.isDragging) {
+        this.signatureStyle.left = `${event.clientX - this.startX}px`;
+        this.signatureStyle.top = `${event.clientY - this.startY}px`;
+      }
+    },
+    onMouseUp() {
+      this.isDragging = false;
+      this.x = parseFloat(this.signatureStyle.left);
+      this.y = parseFloat(this.signatureStyle.top);
+    },
     async addSignature() {
-      const pdfDoc = await PDFDocument.load(this.pdfData);
-      pdfDoc.registerFontkit(fontkit);
-      const fontBytes = await fetch(NotoSansJP).then(res => res.arrayBuffer());
-      const customFont = await pdfDoc.embedFont(fontBytes);
+      try {
+        const pdfDoc = await PDFDocument.load(this.pdfData);
+        pdfDoc.registerFontkit(fontkit);
+        const fontBytes = await fetch(NotoSansJP).then((res) => res.arrayBuffer());
+        const customFont = await pdfDoc.embedFont(fontBytes);
 
-      const pages = pdfDoc.getPages();
-      const firstPage = pages[0];
-      const { width, height } = firstPage.getSize();
+        const pages = pdfDoc.getPages();
+        const firstPage = pages[0];
 
-      firstPage.drawText(this.signatureText, {
-        x: width - 150,
-        y: height - 50,
-        size: 24,
-        font: customFont,
-        color: rgb(0, 0, 0),
-      });
+        firstPage.drawText(this.signatureText, {
+          x: this.x,
+          y: firstPage.getHeight() - this.y - this.fontSize,
+          size: this.fontSize,
+          font: customFont,
+          color: rgb(0, 0, 0),
+        });
 
-      const pdfBytes = await pdfDoc.save();
-      this.signedPdf = new Blob([pdfBytes], { type: 'application/pdf' });
-      this.pdfReady = true;
+        const pdfBytes = await pdfDoc.save();
+        this.signedPdf = new Blob([pdfBytes], { type: 'application/pdf' });
+        this.pdfReady = true;
+      } catch (error) {
+        console.error('Failed to add signature:', error);
+      }
     },
     downloadPdf() {
       const url = URL.createObjectURL(this.signedPdf);
@@ -108,8 +165,8 @@ export default {
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -126,5 +183,19 @@ export default {
 img {
   max-width: 100%;
   height: auto;
+}
+.pdf-preview-container {
+  position: relative;
+}
+.pdf-preview {
+  width: 100%;
+  border: 1px solid #ccc;
+}
+.signature-preview {
+  position: absolute;
+  padding: 5px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid #000;
+  cursor: move;
 }
 </style>

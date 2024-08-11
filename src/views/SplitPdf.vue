@@ -70,7 +70,7 @@
           const reader = new FileReader();
           reader.onload = (e) => {
             this.pdfData = new Uint8Array(e.target.result.slice(0));
-            this.generateThumbnails(); // サムネイル生成
+            this.generateThumbnails();
           };
           reader.readAsArrayBuffer(file);
         }
@@ -83,7 +83,7 @@
           const reader = new FileReader();
           reader.onload = (e) => {
             this.pdfData = new Uint8Array(e.target.result.slice(0));
-            this.generateThumbnails(); // サムネイル生成
+            this.generateThumbnails();
           };
           reader.readAsArrayBuffer(file);
         }
@@ -96,7 +96,7 @@
         this.thumbnails = [];
         for (let i = 0; i < pdf.numPages; i++) {
           const page = await pdf.getPage(i + 1);
-          const viewport = page.getViewport({ scale: 1.0 }); // プレビュー用のスケール
+          const viewport = page.getViewport({ scale: 1.0 });
   
           const canvas = document.createElement('canvas');
           const context = canvas.getContext('2d');

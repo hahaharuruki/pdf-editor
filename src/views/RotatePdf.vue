@@ -38,7 +38,7 @@ export default {
     return {
       selectedFileName: '',
       pdfData: null,
-      rotation: 90, // 回転角度を保持するデータプロパティ、デフォルトを90度に設定
+      rotation: 90,
       pdfReady: false,
       rotatedPdf: null,
     };

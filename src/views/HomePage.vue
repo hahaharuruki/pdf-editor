@@ -71,12 +71,12 @@ export default {
           route: '/page-number-pdf',
           //icon: require('@/assets/icons/page-number-pdf.png')
         },
-        {
-          title: 'PDFに署名',
-          description: 'PDFにデジタル署名を追加します。',
-          route: '/sign-pdf',
-          //icon: require('@/assets/icons/sign-pdf.png')
-        }
+        // {
+        //   title: 'PDFに署名',
+        //   description: 'PDFにデジタル署名を追加します。',
+        //   route: '/sign-pdf',
+        //   //icon: require('@/assets/icons/sign-pdf.png')
+        // }
       ]
     };
   }
