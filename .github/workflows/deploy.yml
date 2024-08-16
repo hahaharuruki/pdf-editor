@@ -3,29 +3,36 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # mainブランチにプッシュされたときにトリガーされる
+      - main
+    paths:
+      - '.github/workflows/*.yml'
+      - 'src/**'
+      - 'public/**'
+      - 'package.json'
+      - 'package-lock.json'
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3  # @v3に更新
+    - name: Checkout repository
+      uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3  # @v3に更新
-        with:
-          node-version: '20'  # Node.jsのバージョンを指定
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20'
 
-      - name: Install dependencies
-        run: npm install
+    - name: Install dependencies
+      run: npm install
 
-      - name: Build the project
-        run: npm run build
+    - name: Build the project
+      run: npm run build
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4  # @v4に更新
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist  # デフォルトでビルドされたファイルが出力されるディレクトリ
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.MY_GITHUB_TOKEN }}
+        publish_dir: ./dist
+        publish_branch: main  # mainブランチにデプロイ
