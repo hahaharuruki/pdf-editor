@@ -12,6 +12,8 @@ import PageNumberPdf from '../views/PageNumberPdf.vue';
 import PrivacyPolicy from '@/views/PrivacyPolicy.vue';
 import FaqPage from '@/views/FaqPage.vue';
 import ContactPage from '@/views/ContactPage.vue';
+import BlogPage from '../views/BlogPage.vue';
+// import HowToUseMergePdf from '../blog/HowToUseMergePdf.vue';
 
 const routes = [
   {
@@ -79,6 +81,16 @@ const routes = [
     name: 'ContactPage',
     component: ContactPage
   },
+  {
+    path: '/blog-page', 
+    name: 'BlogPage', 
+    component: BlogPage 
+  },
+  // { 
+  //   path: '/blog-page/how-to-use-merge-pdf', 
+  //   name: 'HowToUseMergePdf', 
+  //   component: HowToUseMergePdf 
+  // },
 ];
 
 const router = createRouter({
