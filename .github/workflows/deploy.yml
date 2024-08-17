@@ -19,14 +19,15 @@ jobs:
         node-version: '20'
 
     - name: Install dependencies
-      run: npm install
+      run: |
+        npm install
+        npm install sitemap-generator --save-dev  # sitemap-generator パッケージをインストール
 
     - name: Build the project
       run: npm run build
 
     - name: Generate sitemap
       run: npx sitemap-generator https://ibiza-pdf.com --output ./dist/sitemap.xml
-
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
