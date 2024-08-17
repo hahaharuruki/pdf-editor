@@ -21,13 +21,13 @@ jobs:
     - name: Install dependencies
       run: |
         npm install
-        npm install sitemap-generator --save-dev  # sitemap-generator パッケージをインストール
+        npm install sitemap-generator-cli --save-dev  # sitemap-generator パッケージをインストール
 
     - name: Build the project
       run: npm run build
 
     - name: Generate sitemap
-      run: npx sitemap-generator https://ibiza-pdf.com --output ./dist/sitemap.xml
+      run: npx sitemap-generator-cli https://ibiza-pdf.com --output ./dist/sitemap.xml  # CLIツールを使用してサイトマップ生成
 
     - name: Verify sitemap generation
       run: ls -l ./dist/sitemap.xml
