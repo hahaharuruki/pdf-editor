@@ -31,7 +31,7 @@ jobs:
 
     - name: Copy sitemap to gh-pages
       run: |
-        cp ./dist/sitemap.xml ./sitemap.xml
+        cp ./sitemap.xml ./sitemap.xml
         git add sitemap.xml
         git commit -m "Add sitemap.xml to gh-pages"
         git push origin gh-pages
