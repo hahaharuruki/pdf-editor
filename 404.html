@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0; URL=/#/404">
+  <meta http-equiv="refresh" content="0; url=/#/">
   <script type="text/javascript">
-    var hash = window.location.hash.substr(1);
-    var path = window.location.pathname;
-    window.location.replace('/#' + path + (hash ? '?' + hash : ''));
+    var pathname = window.location.pathname;
+    window.location.replace(window.location.origin + '/#' + pathname);
   </script>
 </head>
 <body>
+  Redirecting...
 </body>
 </html>
