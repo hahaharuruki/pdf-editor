@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta http-equiv="refresh" content="0; url=/#/">
-  <script type="text/javascript">
-    var pathname = window.location.pathname;
-    window.location.replace(window.location.origin + '/#' + pathname);
-  </script>
-</head>
-<body>
-  Redirecting...
-</body>
+  <head>
+    <meta http-equiv="refresh" content="0; url=/#" />
+    <script type="text/javascript">
+      var pathname = window.location.pathname;
+      var hash = pathname.substring(1); // 最初のスラッシュを削除
+      window.location.replace(window.location.origin + '/#/' + hash);
+    </script>
+  </head>
+  <body>
+    Redirecting...
+  </body>
 </html>
