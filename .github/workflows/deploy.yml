@@ -24,6 +24,10 @@ jobs:
     - name: Build the project
       run: npm run build
 
+    - name: Generate sitemap
+      run: npx sitemap-generator https://ibiza-pdf.com --output ./dist/sitemap.xml
+
+
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
