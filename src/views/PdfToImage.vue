@@ -181,7 +181,7 @@ export default {
     getDownloadFileName(index) {
       const baseName = this.selectedFileName.replace('.pdf', '');
       const extension = this.selectedFormat.split('/')[1];
-      return `${baseName}_ページ${index + 1}.${extension}`;
+      return `${baseName}_page${index + 1}.${extension}`;
     },
     async downloadAllImages() {
       if (this.images.length === 0) return;
@@ -190,7 +190,7 @@ export default {
       const extension = this.selectedFormat.split('/')[1];
       for (let i = 0; i < this.images.length; i++) {
         const baseName = this.selectedFileName.replace('.pdf', '');
-        const fileName = `${baseName}_ページ${i + 1}.${extension}`;
+        const fileName = `${baseName}_page${i + 1}.${extension}`;
         const img = await fetch(this.images[i].src);
         const blob = await img.blob();
         zip.file(fileName, blob);

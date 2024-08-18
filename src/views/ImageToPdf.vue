@@ -71,7 +71,7 @@ export default {
       event.preventDefault();
     },
     generateThumbnails() {
-      this.thumbnails = []; // サムネイルのリセット
+      this.thumbnails = [];
       this.selectedFiles.forEach(file => {
         const reader = new FileReader();
         reader.onload = (e) => {
