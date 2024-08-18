@@ -90,25 +90,30 @@
       },
       async generateThumbnails() {
         if (!this.pdfData) return;
-  
-        const loadingTask = getDocument({ data: this.pdfData.slice(0) });
+
+        const loadingTask = getDocument({
+          data: this.pdfData.slice(0),
+          cMapUrl: 'https://cdn.jsdelivr.net/npm/pdfjs-dist@2.5.207/cmaps/',
+          cMapPacked: true,
+        });
+
         const pdf = await loadingTask.promise;
         this.thumbnails = [];
         for (let i = 0; i < pdf.numPages; i++) {
           const page = await pdf.getPage(i + 1);
           const viewport = page.getViewport({ scale: 1.0 });
-  
+
           const canvas = document.createElement('canvas');
           const context = canvas.getContext('2d');
-  
+
           canvas.height = viewport.height;
           canvas.width = viewport.width;
-  
+
           const renderContext = {
             canvasContext: context,
             viewport: viewport
           };
-  
+
           await page.render(renderContext).promise;
           this.thumbnails.push(canvas.toDataURL('image/jpeg'));
         }
