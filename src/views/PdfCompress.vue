@@ -34,6 +34,14 @@
         compressedPdfReady: false,
       };
     },
+    mounted() {
+      window.addEventListener('dragover', this.onDragOver);
+      window.addEventListener('drop', this.onDrop);
+    },
+    beforeUnmount() {
+      window.removeEventListener('dragover', this.onDragOver);
+      window.removeEventListener('drop', this.onDrop);
+    },
     methods: {
       triggerFileInput() {
         this.$refs.fileInput.click();
@@ -46,11 +54,15 @@
         }
       },
       onDrop(event) {
+        event.preventDefault();
         const file = event.dataTransfer.files[0];
         if (file) {
           this.selectedFileName = file.name;
           this.readFile(file);
         }
+      },
+      onDragOver(event) {
+        event.preventDefault();
       },
       readFile(file) {
         if (file.type === 'application/pdf') {
