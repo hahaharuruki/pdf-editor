@@ -2,91 +2,91 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
-    <loc>https://ibiza-pdf.com/</loc>
+    <loc>https://ibiza-pdf.com/#/</loc>
     <lastmod>2024-08-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://ibiza-pdf.com/pdf-to-image</loc>
+    <loc>https://ibiza-pdf.com/#/pdf-to-image</loc>
     <lastmod>2024-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://ibiza-pdf.com/merge-pdf</loc>
+    <loc>https://ibiza-pdf.com/#/merge-pdf</loc>
     <lastmod>2024-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://ibiza-pdf.com/pdf-compress</loc>
+    <loc>https://ibiza-pdf.com/#/pdf-compress</loc>
     <lastmod>2024-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://ibiza-pdf.com/split-pdf</loc>
+    <loc>https://ibiza-pdf.com/#/split-pdf</loc>
     <lastmod>2024-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://ibiza-pdf.com/image-to-pdf</loc>
+    <loc>https://ibiza-pdf.com/#/image-to-pdf</loc>
     <lastmod>2024-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://ibiza-pdf.com/watermark-pdf</loc>
+    <loc>https://ibiza-pdf.com/#/watermark-pdf</loc>
     <lastmod>2024-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://ibiza-pdf.com/rotate-pdf</loc>
+    <loc>https://ibiza-pdf.com/#/rotate-pdf</loc>
     <lastmod>2024-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://ibiza-pdf.com/page-number-pdf</loc>
+    <loc>https://ibiza-pdf.com/#/page-number-pdf</loc>
     <lastmod>2024-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://ibiza-pdf.com/privacy-policy</loc>
+    <loc>https://ibiza-pdf.com/#/privacy-policy</loc>
     <lastmod>2024-08-17</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
 
   <url>
-    <loc>https://ibiza-pdf.com/faq</loc>
+    <loc>https://ibiza-pdf.com/#/faq-page</loc>
     <lastmod>2024-08-17</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
 
   <url>
-    <loc>https://ibiza-pdf.com/contact</loc>
+    <loc>https://ibiza-pdf.com/#/contact-page</loc>
     <lastmod>2024-08-17</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
 
   <url>
-    <loc>https://ibiza-pdf.com/blog</loc>
+    <loc>https://ibiza-pdf.com/#/blog-page</loc>
     <lastmod>2024-08-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
