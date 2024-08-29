@@ -19,6 +19,7 @@
             </div>
             <button v-if="selectedFileName && !pdfReady" @click="addWatermark" class="btn btn-primary w-100">2. 透かしを追加する</button>
             <button v-if="pdfReady" @click="downloadPdf" class="btn btn-secondary w-100 mt-2">3. ダウンロード</button>
+            <ResetButton />
           </div>
         </div>
       </div>
@@ -35,8 +36,12 @@
 import { degrees, PDFDocument, rgb } from 'pdf-lib';
 import fontkit from '@pdf-lib/fontkit';
 import NotoSansJP from '@/assets/fonts/NotoSansJP-Regular.ttf';
+import ResetButton from '@/components/ResetButton.vue';
 
 export default {
+  components: {
+    ResetButton 
+  },
   data() {
     return {
       selectedFileName: '',

@@ -26,6 +26,7 @@
                 <button @click="splitPdf" class="btn btn-primary w-100 mt-3" :disabled="selectedPages.length === 0">3. 分割する</button>
               </div>
               <button v-if="splitPdfReady" @click="downloadSplitPdf" class="btn btn-secondary w-100 mt-2">4. ダウンロード</button>
+              <ResetButton />
             </div>
           </div>
         </div>
@@ -36,10 +37,14 @@
   <script>
   import { getDocument, GlobalWorkerOptions } from 'pdfjs-dist/legacy/build/pdf';
   import { PDFDocument } from 'pdf-lib';
+  import ResetButton from '@/components/ResetButton.vue';
   
   GlobalWorkerOptions.workerSrc = `${process.env.BASE_URL}pdf.worker.mjs`;
   
   export default {
+    components: {
+    ResetButton 
+  },
     data() {
       return {
         selectedFileName: '',

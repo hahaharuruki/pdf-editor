@@ -37,6 +37,7 @@
               <button @click="convertToImages" class="btn btn-primary w-100" :disabled="!pdfData">2. 変換する</button>
             </div>
             <button v-if="images.length > 0" @click="downloadAllImages" class="btn btn-secondary w-100 mt-2">3. 全ページを一括ダウンロード</button>
+            <ResetButton />
           </div>
         </div>
       </div>
@@ -58,10 +59,14 @@
 import { getDocument, GlobalWorkerOptions } from 'pdfjs-dist/legacy/build/pdf';
 import JSZip from 'jszip';
 import { saveAs } from 'file-saver';
+import ResetButton from '@/components/ResetButton.vue';
 
 GlobalWorkerOptions.workerSrc = `${process.env.BASE_URL}pdf.worker.mjs`;
 
 export default {
+  components: {
+    ResetButton 
+  },
   data() {
     return {
       pdfData: null,

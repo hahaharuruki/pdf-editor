@@ -21,6 +21,7 @@
             </div>
             <button v-if="selectedFiles.length > 0 && !pdfReady" @click="convertToPdf" class="btn btn-primary w-100">2. PDFに変換する</button>
             <button v-if="pdfReady" @click="downloadPdf" class="btn btn-secondary w-100 mt-2">3. ダウンロード</button>
+            <ResetButton />
           </div>
         </div>
       </div>
@@ -30,8 +31,12 @@
 
 <script>
 import { PDFDocument } from 'pdf-lib';
+import ResetButton from '@/components/ResetButton.vue';
 
 export default {
+  components: {
+    ResetButton 
+  },
   data() {
     return {
       selectedFiles: [],

@@ -26,6 +26,7 @@
             </div>
             <button v-if="selectedFileName && !pdfReady" @click="addPageNumbers" class="btn btn-primary w-100">2. ページ番号を追加する</button>
             <button v-if="pdfReady" @click="downloadPdf" class="btn btn-secondary w-100 mt-2">3. ダウンロード</button>
+            <ResetButton />
           </div>
         </div>
       </div>
@@ -35,8 +36,12 @@
 
 <script>
 import { PDFDocument, rgb } from 'pdf-lib';
+import ResetButton from '@/components/ResetButton.vue';
 
 export default {
+  components: {
+    ResetButton 
+  },
   data() {
     return {
       selectedFileName: '',

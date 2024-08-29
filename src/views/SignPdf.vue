@@ -29,6 +29,7 @@
             </div>
             <button v-if="selectedFileName && !pdfReady" @click="addSignature" class="btn btn-primary w-100">2. 署名を追加する</button>
             <button v-if="pdfReady" @click="downloadPdf" class="btn btn-secondary w-100 mt-2">3. ダウンロード</button>
+            <ResetButton />
           </div>
         </div>
       </div>
@@ -41,10 +42,14 @@ import { PDFDocument, rgb } from 'pdf-lib';
 import fontkit from '@pdf-lib/fontkit';
 import NotoSansJP from '@/assets/fonts/NotoSansJP-Regular.ttf';
 import { getDocument, GlobalWorkerOptions } from 'pdfjs-dist/legacy/build/pdf';
+import ResetButton from '@/components/ResetButton.vue';
 
 GlobalWorkerOptions.workerSrc = `${process.env.BASE_URL}pdf.worker.mjs`;
 
 export default {
+  components: {
+    ResetButton 
+  },
   data() {
     return {
       selectedFileName: '',

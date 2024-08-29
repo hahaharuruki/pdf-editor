@@ -15,6 +15,7 @@
               </div>
               <button v-if="selectedFileName && !compressedPdfReady" @click="compressPdf" class="btn btn-primary w-100">2. 圧縮する</button>
               <button v-if="compressedPdfReady" @click="downloadCompressedPdf" class="btn btn-secondary w-100 mt-2">3. ダウンロード</button>
+              <ResetButton />
             </div>
           </div>
         </div>
@@ -24,8 +25,12 @@
   
   <script>
   import { PDFDocument } from 'pdf-lib';
+  import ResetButton from '@/components/ResetButton.vue';
   
   export default {
+    components: {
+    ResetButton 
+  },
     data() {
       return {
         selectedFileName: '',

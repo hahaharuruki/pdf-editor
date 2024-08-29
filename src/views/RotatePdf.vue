@@ -23,6 +23,7 @@
             </div>
             <button v-if="selectedFileName && !pdfReady" @click="rotatePdf" class="btn btn-primary w-100">2. 回転する</button>
             <button v-if="pdfReady" @click="downloadPdf" class="btn btn-secondary w-100 mt-2">3. ダウンロード</button>
+            <ResetButton />
           </div>
         </div>
       </div>
@@ -32,8 +33,12 @@
 
 <script>
 import { PDFDocument, degrees } from 'pdf-lib';
+import ResetButton from '@/components/ResetButton.vue';
 
 export default {
+  components: {
+    ResetButton 
+  },
   data() {
     return {
       selectedFileName: '',

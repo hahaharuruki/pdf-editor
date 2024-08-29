@@ -25,7 +25,6 @@
             <div class="mb-3" v-if="selectedFiles.length > 0">
               <label class="form-label">選択されたファイル:</label>
               <div v-for="(file, index) in selectedFiles" :key="index" class="file-item">
-                <!-- 順番の数字を表示 -->
                 <span class="file-index">{{ index + 1 }}.</span>
                 <img :src="thumbnails[index]" class="img-thumbnail mb-2" alt="サムネイル" />
                 <div class="file-info">
@@ -59,6 +58,7 @@
             <a v-if="mergedPdfUrl" :href="mergedPdfUrl" download="merged.pdf" class="btn btn-secondary w-100 mt-2">
               3. ダウンロード
             </a>
+            <ResetButton />
           </div>
         </div>
       </div>
@@ -70,10 +70,14 @@
 import { getDocument, GlobalWorkerOptions } from 'pdfjs-dist/legacy/build/pdf';
 import { PDFDocument } from 'pdf-lib';
 import '@fortawesome/fontawesome-free/css/all.css';
+import ResetButton from '@/components/ResetButton.vue';
 
 GlobalWorkerOptions.workerSrc = `${process.env.BASE_URL}pdf.worker.mjs`;
 
 export default {
+  components: {
+    ResetButton 
+  },
   data() {
     return {
       pdfFiles: [],
