@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
     <meta http-equiv="refresh" content="0; url=/" />
     <script type="text/javascript">
       var pathname = window.location.pathname;
-      var search = window.location.search;
-      var hash = window.location.hash;
-      var newUrl = window.location.origin + pathname + search + hash;
-      window.location.replace(newUrl);
+      window.location.replace(window.location.origin + '/' + pathname);
     </script>
   </head>
   <body>
