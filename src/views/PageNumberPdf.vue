@@ -26,7 +26,7 @@
             </div>
             <button v-if="selectedFileName && !pdfReady" @click="addPageNumbers" class="btn btn-primary w-100">2. ページ番号を追加する</button>
             <button v-if="pdfReady" @click="downloadPdf" class="btn btn-secondary w-100 mt-2">3. ダウンロード</button>
-            <ResetButton />
+            <ResetButton :resetHandler="resetPage" />
           </div>
         </div>
       </div>
@@ -142,10 +142,18 @@ export default {
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
+    },
+    resetPage() {
+      this.selectedFileName = '';
+      this.pdfData = null;
+      this.position = 'bottom-right';
+      this.pdfReady = false;
+      this.numberedPdf = null;
     }
   }
 };
 </script>
+
 
 <style scoped>
 .container {

@@ -23,7 +23,7 @@
             </div>
             <button v-if="selectedFileName && !pdfReady" @click="rotatePdf" class="btn btn-primary w-100">2. 回転する</button>
             <button v-if="pdfReady" @click="downloadPdf" class="btn btn-secondary w-100 mt-2">3. ダウンロード</button>
-            <ResetButton />
+            <ResetButton :resetHandler="resetPage" />
           </div>
         </div>
       </div>
@@ -109,10 +109,18 @@ export default {
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
+    },
+    resetPage() {
+      this.selectedFileName = '';
+      this.pdfData = null;
+      this.rotation = 90;
+      this.pdfReady = false;
+      this.rotatedPdf = null;
     }
   }
 };
 </script>
+
 
 <style scoped>
 .container {

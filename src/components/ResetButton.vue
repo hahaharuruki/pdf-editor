@@ -1,20 +1,26 @@
-// ResetButton.vue
+<!-- ResetButton.vue -->
 <template>
-  <button @click="resetPage" class="btn btn-secondary">リセット</button>
-</template>
-
-<script>
-export default {
-  methods: {
-    resetPage() {
-      this.$router.go(0);
+    <button @click="resetImport" class="btn btn-secondary">リセット</button>
+  </template>
+  
+  <script>
+  export default {
+    props: {
+      resetHandler: {
+        type: Function,
+        required: true
+      }
+    },
+    methods: {
+      resetImport() {
+        this.resetHandler(); // ページ内のリセット処理を呼び出す
+      }
     }
+  };
+  </script>
+  
+  <style scoped>
+  .btn {
+    margin-top: 20px;
   }
-};
-</script>
-
-<style scoped>
-.btn {
-  margin-top: 20px;
-}
-</style>
+  </style>

@@ -19,7 +19,7 @@
             </div>
             <button v-if="selectedFileName && !pdfReady" @click="addWatermark" class="btn btn-primary w-100">2. 透かしを追加する</button>
             <button v-if="pdfReady" @click="downloadPdf" class="btn btn-secondary w-100 mt-2">3. ダウンロード</button>
-            <ResetButton />
+            <ResetButton :resetHandler="resetPage" />
           </div>
         </div>
       </div>
@@ -135,10 +135,18 @@ export default {
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
+    },
+    resetPage() {
+      this.selectedFileName = '';
+      this.pdfData = null;
+      this.watermarkText = '';
+      this.pdfReady = false;
+      this.pdfPreviewUrl = '';
     }
   }
 };
 </script>
+
 
 <style scoped>
 .container {

@@ -58,7 +58,7 @@
             <a v-if="mergedPdfUrl" :href="mergedPdfUrl" download="merged.pdf" class="btn btn-secondary w-100 mt-2">
               3. ダウンロード
             </a>
-            <ResetButton />
+            <ResetButton :resetHandler="resetPage" />
           </div>
         </div>
       </div>
@@ -176,10 +176,17 @@ export default {
       [this.pdfFiles[index1], this.pdfFiles[index2]] = [this.pdfFiles[index2], this.pdfFiles[index1]];
       [this.selectedFiles[index1], this.selectedFiles[index2]] = [this.selectedFiles[index2], this.selectedFiles[index1]];
       [this.thumbnails[index1], this.thumbnails[index2]] = [this.thumbnails[index2], this.thumbnails[index1]];
+    },
+    resetPage() {
+      this.pdfFiles = [];
+      this.selectedFiles = [];
+      this.thumbnails = [];
+      this.mergedPdfUrl = null;
     }
   },
 };
 </script>
+
 
 <style scoped>
 .container {

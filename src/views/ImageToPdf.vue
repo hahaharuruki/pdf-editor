@@ -21,7 +21,7 @@
             </div>
             <button v-if="selectedFiles.length > 0 && !pdfReady" @click="convertToPdf" class="btn btn-primary w-100">2. PDFに変換する</button>
             <button v-if="pdfReady" @click="downloadPdf" class="btn btn-secondary w-100 mt-2">3. ダウンロード</button>
-            <ResetButton />
+            <ResetButton :resetHandler="resetPage" />
           </div>
         </div>
       </div>
@@ -117,10 +117,17 @@ export default {
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
+    },
+    resetPage() {
+      this.selectedFiles = [];
+      this.thumbnails = [];
+      this.pdfData = null;
+      this.pdfReady = false;
     }
   }
 };
 </script>
+
 
 <style scoped>
 .container {

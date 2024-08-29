@@ -37,7 +37,7 @@
               <button @click="convertToImages" class="btn btn-primary w-100" :disabled="!pdfData">2. 変換する</button>
             </div>
             <button v-if="images.length > 0" @click="downloadAllImages" class="btn btn-secondary w-100 mt-2">3. 全ページを一括ダウンロード</button>
-            <ResetButton />
+            <ResetButton :resetHandler="resetPage" />
           </div>
         </div>
       </div>
@@ -202,6 +202,17 @@ export default {
       }
       const content = await zip.generateAsync({ type: 'blob' });
       saveAs(content, `${this.selectedFileName.replace('.pdf', '')}.zip`);
+    },
+    resetPage() {
+      this.pdfData = null;
+      this.images = [];
+      this.selectedFileName = '';
+      this.selectedFormat = 'image/jpeg';
+      const canvas = this.$refs.thumbnailCanvas;
+      if (canvas) {
+        const context = canvas.getContext('2d');
+        context.clearRect(0, 0, canvas.width, canvas.height);
+      }
     }
   },
 };

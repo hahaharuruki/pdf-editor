@@ -29,7 +29,8 @@
             </div>
             <button v-if="selectedFileName && !pdfReady" @click="addSignature" class="btn btn-primary w-100">2. 署名を追加する</button>
             <button v-if="pdfReady" @click="downloadPdf" class="btn btn-secondary w-100 mt-2">3. ダウンロード</button>
-            <ResetButton />
+            <!-- ResetButtonにresetHandlerを渡す -->
+            <ResetButton :resetHandler="resetPage" />
           </div>
         </div>
       </div>
@@ -171,9 +172,28 @@ export default {
       a.click();
       document.body.removeChild(a);
     },
+    resetPage() {
+      this.selectedFileName = '';
+      this.pdfData = null;
+      this.signatureText = '';
+      this.pdfReady = false;
+      this.signedPdf = null;
+      this.pdfPreviewSrc = null;
+      this.isDragging = false;
+      this.signatureStyle = {
+        left: '0px',
+        top: '0px',
+      };
+      this.startX = 0;
+      this.startY = 0;
+      this.x = 0;
+      this.y = 0;
+      this.fontSize = 24;
+    },
   },
 };
 </script>
+
 
 <style scoped>
 .container {
