@@ -14,7 +14,7 @@ import FaqPage from '@/views/FaqPage.vue';
 import ContactPage from '@/views/ContactPage.vue';
 import BlogPage from '../views/BlogPage.vue';
 // import HowToUseMergePdf from '../blog/HowToUseMergePdf.vue';
-import NotFoundComponent from '../views/NotFoundComponent.vue';
+
 
 const routes = [
   {
@@ -94,8 +94,6 @@ const routes = [
   // },
   {
     path: '/:catchAll(.*)',
-    name: 'NotFound',
-    component: NotFoundComponent, // エラーページを表示するか、ホームにリダイレクトする
     redirect: '/',
   },
 ];

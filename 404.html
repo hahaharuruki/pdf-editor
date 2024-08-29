@@ -2,15 +2,15 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Not Found</title>
-    <script type="text/javascript">
-      var pathname = window.location.pathname;
-      window.location.href = window.location.origin + pathname;
+    <meta http-equiv="refresh" content="0;url=/">
+    <script>
+      if (window.location.pathname !== "/") {
+        window.location.replace(window.location.origin + "/");
+      }
     </script>
+    <title>Redirecting...</title>
   </head>
   <body>
-    <h1>ページが見つかりません</h1>
-    <p><a href="/">ホームに戻る</a></p>
+    Redirecting...
   </body>
 </html>
