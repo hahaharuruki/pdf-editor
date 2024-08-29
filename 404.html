@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
     <meta http-equiv="refresh" content="0; url=/" />
     <script type="text/javascript">
-      var pathname = window.location.pathname;
-      window.location.replace(window.location.origin + '/' + pathname);
+      var path = window.location.pathname;
+      if (!path.startsWith("/index.html")) {
+        window.location.replace(window.location.origin + "/" + path);
+      }
     </script>
   </head>
   <body>

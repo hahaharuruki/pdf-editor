@@ -91,11 +91,15 @@ const routes = [
   //   name: 'HowToUseMergePdf', 
   //   component: HowToUseMergePdf 
   // },
+  {
+    path: '/:catchAll(.*)', // すべてのパスにマッチするキャッチオールルート
+    redirect: '/', // ホームにリダイレクト
+  },
 ];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
+  routes,
 });
 
 export default router;
