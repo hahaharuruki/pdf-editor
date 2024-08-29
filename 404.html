@@ -2,16 +2,15 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0;url=/">
-    <script>
-      // パスが "/" で終わらない場合、リダイレクトを防ぐ
-      if (window.location.pathname !== "/") {
-        window.location.replace(window.location.origin + "/");
-      }
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found</title>
+    <script type="text/javascript">
+      var pathname = window.location.pathname;
+      window.location.href = window.location.origin + pathname;
     </script>
-    <title>Redirecting...</title>
   </head>
   <body>
-    Redirecting...
+    <h1>ページが見つかりません</h1>
+    <p><a href="/">ホームに戻る</a></p>
   </body>
 </html>
