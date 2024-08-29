@@ -113,6 +113,15 @@ export default {
 .logo-text {
   color: white;
   margin-left: 10px;
+  text-decoration: none; /* 下線を消す */
+}
+
+.logo-container a {
+  text-decoration: none; /* リンク全体の下線を消す */
+}
+
+.logo-container a:hover {
+  text-decoration: none; /* ホバー時の下線も消す */
 }
 
 .menu-button {
