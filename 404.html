@@ -2,11 +2,13 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0;url=/">
     <script>
-      if (window.location.pathname !== "/") {
-        window.location.replace(window.location.origin + "/");
-      }
+      let segmentCount = 1; 
+      let l = window.location;
+      let port = l.port ? ':' + l.port : '';
+      l.replace(
+          `${l.protocol}//${l.hostname}${port}/?p=${l.pathname.split('/').slice(0, 1 + segmentCount).join('/')}`
+      );
     </script>
     <title>Redirecting...</title>
   </head>

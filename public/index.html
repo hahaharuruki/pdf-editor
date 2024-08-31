@@ -20,6 +20,22 @@
     <meta name="twitter:title" content="PDFエディター | 簡単で便利なPDF編集ツール">
     <meta name="twitter:description" content="PDFエディターは、PDFファイルの結合、分割、圧縮、画像変換、透かし追加など、あらゆる機能を提供する完全無料のオンラインツールです。">
     <meta name="twitter:image" content="https://yourwebsite.com/path/to/your-image.jpg">
+
+    <!-- 遷移先のURLを処理するスクリプト -->
+    <script>
+    (function (l) {
+        if (l.search) {
+            var q = {};
+            l.search.slice(1).split('&').forEach(function (v) {
+                var a = v.split('=');
+                q[a[0]] = a[1];
+            });
+            if (q.p !== undefined) {
+                window.history.replaceState(null, null, l.pathname.slice(0, -1) + (q.p || ''));
+            }
+        }
+    }(window.location))
+    </script>
   </head>
   <body>
     <noscript>
