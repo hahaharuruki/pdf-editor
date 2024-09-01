@@ -3,7 +3,7 @@
 
   <url>
     <loc>https://ibiza-pdf.com/</loc>
-    <lastmod>2024-08-17</lastmod>
+    <lastmod>2024-09-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -30,8 +30,8 @@
   </url>
 
   <url>
-    <loc>https://ibiza-pdf.com/split-pdf</loc>
-    <lastmod>2024-08-17</lastmod>
+    <loc>https://ibiza-pdf.com/extract-pdf</loc>
+    <lastmod>2024-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -66,28 +66,35 @@
 
   <url>
     <loc>https://ibiza-pdf.com/privacy-policy</loc>
-    <lastmod>2024-08-17</lastmod>
+    <lastmod>2024-09-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
 
   <url>
-    <loc>https://ibiza-pdf.com/faq-page</loc>
-    <lastmod>2024-08-17</lastmod>
+    <loc>https://ibiza-pdf.com/faq</loc>
+    <lastmod>2024-09-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
 
   <url>
-    <loc>https://ibiza-pdf.com/contact-page</loc>
+    <loc>https://ibiza-pdf.com/contact</loc>
     <lastmod>2024-08-17</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
 
   <url>
-    <loc>https://ibiza-pdf.com/blog-page</loc>
-    <lastmod>2024-08-17</lastmod>
+    <loc>https://ibiza-pdf.com/blog</loc>
+    <lastmod>2024-09-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+    <url>
+    <loc>https://ibiza-pdf.com/blog/blog1</loc>
+    <lastmod>2024-09-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
