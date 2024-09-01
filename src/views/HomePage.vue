@@ -30,10 +30,10 @@ export default {
           icon: require('@/assets/icons/merge-pdf.png')
         },
         {
-          title: 'PDF 分割',
-          description: '簡単な操作で一つのPDFファイルを複数のPDFファイルに分割します。',
-          route: '/split-pdf',
-          icon: require('@/assets/icons/split-pdf.png')
+          title: 'PDF 抽出',
+          description: '簡単な操作で任意のページを抽出して新しいPDFファイルを作成します。',
+          route: '/extract-pdf',
+          icon: require('@/assets/icons/extract-pdf.png')
         },
         {
           title: 'PDF 圧縮',

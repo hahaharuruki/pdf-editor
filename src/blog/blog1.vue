@@ -224,7 +224,7 @@
           <div class="widget related-posts">
             <h3 class="widget-title">関連ページ</h3>
             <ul>
-              <li><router-link to="/split-pdf">PDFを抽出する方法</router-link></li>
+              <li><router-link to="/extract-pdf">PDFを抽出する方法</router-link></li>
               <li><router-link to="/pdf-compress">PDFを圧縮する方法</router-link></li>
               <li><router-link to="/page-number-pdf">PDFにページ番号を追加する方法</router-link></li>
             </ul>

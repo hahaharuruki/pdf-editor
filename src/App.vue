@@ -13,7 +13,7 @@
       <nav :class="{ 'nav-open': isMenuOpen }">
         <ul>
           <li><router-link to="/merge-pdf">PDF 結合</router-link></li>
-          <li><router-link to="/split-pdf">PDF 分割</router-link></li>
+          <li><router-link to="/extract-pdf">PDF 抽出</router-link></li>
           <li><router-link to="/pdf-compress">PDF 圧縮</router-link></li>
           <li><router-link to="/pdf-to-image">PDF 画像 変換</router-link></li>
           <li><router-link to="/image-to-pdf">画像 PDF 変換</router-link></li>

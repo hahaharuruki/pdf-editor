@@ -3,7 +3,7 @@ import HomePage from '../views/HomePage.vue';
 import PdfToImage from '../views/PdfToImage.vue';
 import MergePdf from '../views/MergePdf.vue';
 import PdfCompress from '../views/PdfCompress.vue';
-import SplitPdf from '../views/SplitPdf.vue';
+import ExtractPdf from '../views/ExtractPdf.vue';
 import ImageToPdf from '../views/ImageToPdf.vue';
 import WatermarkPdf from '../views/WatermarkPdf.vue';
 import RotatePdf from '../views/RotatePdf.vue';
@@ -38,9 +38,9 @@ const routes = [
     component: PdfCompress
   },
   {
-    path: '/split-pdf',
-    name: 'SplitPdf',
-    component: SplitPdf
+    path: '/extract-pdf',
+    name: 'ExtractPdf',
+    component: ExtractPdf
   },
   { 
     path: '/image-to-pdf', 

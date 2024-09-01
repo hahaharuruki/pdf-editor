@@ -1,7 +1,7 @@
 <template>
   <div class="container mt-5">
-    <h1 class="text-center mb-4">PDF 分割</h1>
-    <p class="text-center">PDFファイルから選択したページを分割してPDFファイルの生成をします。すべてブラウザ上で処理されるので、サーバーを含めてファイルデータが外部に送信されることはありません。ファイルをドラッグ&ドロップしてください。</p>
+    <h1 class="text-center mb-4">PDF 抽出</h1>
+    <p class="text-center">PDFファイルから選択したページを抽出して新しくPDFファイルの生成をします。すべてブラウザ上で処理されるので、サーバーを含めてファイルデータが外部に送信されることはありません。ファイルをドラッグ&ドロップしてください。</p>
     <div class="row justify-content-center">
       <div class="col-md-6">
         <div class="card shadow-sm">
@@ -14,7 +14,7 @@
               <label class="form-label">選択されたファイル: {{ selectedFileName }}</label>
             </div>
             <div v-if="pdfLoaded">
-              <label class="form-label mt-3">2. 分割するページを選択</label>
+              <label class="form-label mt-3">2. 抽出するページを選択</label>
               <div class="row">
                 <div class="col-12 mb-3" v-for="(thumbnail, index) in thumbnails" :key="index">
                   <div class="page-preview" @click="togglePageSelection(index)" :class="{'selected': selectedPages.includes(index)}">
@@ -23,7 +23,7 @@
                   </div>
                 </div>
               </div>
-              <button @click="splitPdf" class="btn btn-primary w-100 mt-3" :disabled="selectedPages.length === 0">3. 分割する</button>
+              <button @click="splitPdf" class="btn btn-primary w-100 mt-3" :disabled="selectedPages.length === 0">3. 抽出する</button>
             </div>
             <button v-if="splitPdfReady" @click="downloadSplitPdf" class="btn btn-secondary w-100 mt-2">4. ダウンロード</button>
             <ResetButton :resetHandler="resetPage" />
