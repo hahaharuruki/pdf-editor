@@ -31,7 +31,7 @@
           <ul>
             <li><router-link to="/">ホーム</router-link></li>
             <li><router-link to="/privacy-policy">プライバシーポリシー</router-link></li>
-            <li><router-link to="/faq-page">よくある質問</router-link></li>
+            <li><router-link to="/faq">よくある質問</router-link></li>
           </ul>
         </div>
         <div class="footer-column">
@@ -44,8 +44,8 @@
         <div class="footer-column">
           <h5>コンタクト</h5>
           <ul>
-            <li><router-link to="/contact-page">お問い合わせページ</router-link></li>
-            <li><router-link to="/blog-page">ブログ</router-link></li>
+            <li><router-link to="/contact">お問い合わせページ</router-link></li>
+            <li><router-link to="/blog">ブログ</router-link></li>
           </ul>
         </div>
         <div class="footer-column">

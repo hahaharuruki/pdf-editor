@@ -13,7 +13,7 @@ import PrivacyPolicy from '@/views/PrivacyPolicy.vue';
 import FaqPage from '@/views/FaqPage.vue';
 import ContactPage from '@/views/ContactPage.vue';
 import BlogPage from '../views/BlogPage.vue';
-// import HowToUseMergePdf from '../blog/HowToUseMergePdf.vue';
+import Blog1 from '../blog/blog1.vue';
 
 
 const routes = [
@@ -73,25 +73,25 @@ const routes = [
     component: PrivacyPolicy
   },
   {
-    path: '/faq-page',
+    path: '/faq',
     name: 'FaqPage',
     component: FaqPage
   },
   {
-    path: '/contact-page',
+    path: '/contact',
     name: 'ContactPage',
     component: ContactPage
   },
   {
-    path: '/blog-page', 
+    path: '/blog', 
     name: 'BlogPage', 
     component: BlogPage 
   },
-  // { 
-  //   path: '/blog-page/how-to-use-merge-pdf', 
-  //   name: 'HowToUseMergePdf', 
-  //   component: HowToUseMergePdf 
-  // },
+  { 
+    path: '/blog/blog1', 
+    name: 'Blog1', 
+    component: Blog1 
+  },
   {
     path: '/:catchAll(.*)',
     redirect: '/',
