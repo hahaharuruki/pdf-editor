@@ -1,5 +1,10 @@
 {
-    "navigationFallback": {
-      "rewrite": "/index.html"
-    }
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": [
+      "/sitemap.xml", 
+      "/img/*.{png,jpg,gif}", 
+      "/css/*"
+    ]
   }
+}
