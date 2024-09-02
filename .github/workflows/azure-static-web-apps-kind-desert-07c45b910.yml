@@ -19,6 +19,8 @@ jobs:
         with:
           submodules: true
           lfs: false
+      - name: Build Project
+        run: npm run build
       - name: Copy Sitemap
         run: cp sitemap.xml dist/
       - name: List Dist Directory
