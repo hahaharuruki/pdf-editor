@@ -5,7 +5,7 @@
       "/sitemap.xml", 
       "/img/*.{png,jpg,gif}", 
       "/css/*",
-      "/blog1.html"
+      "/blog/blog1.html"
     ]
   }
 }
