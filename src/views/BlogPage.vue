@@ -7,7 +7,7 @@
             <div class="card-body">
               <h5 class="card-title">{{ post.title }}</h5>
               <p class="card-text">{{ post.excerpt }}</p>
-              <a herf="'/blog/blog1'" class="btn btn-primary">続きを読む</a>
+              <a herf="https://www.ibiza-pdf.com/blog/blog1.html" class="btn btn-primary">続きを読む</a>
             </div>
           </div>
         </div>
