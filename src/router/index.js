@@ -13,7 +13,6 @@ import PrivacyPolicy from '@/views/PrivacyPolicy.vue';
 import FaqPage from '@/views/FaqPage.vue';
 import ContactPage from '@/views/ContactPage.vue';
 import BlogPage from '../views/BlogPage.vue';
-import Blog1 from '../blog/blog1.vue';
 
 
 const routes = [
@@ -86,11 +85,6 @@ const routes = [
     path: '/blog', 
     name: 'BlogPage', 
     component: BlogPage 
-  },
-  { 
-    path: '/blog/blog1', 
-    name: 'Blog1', 
-    component: Blog1 
   },
   {
     path: '/:catchAll(.*)',
