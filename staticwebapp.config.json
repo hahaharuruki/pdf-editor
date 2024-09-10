@@ -4,7 +4,8 @@
     "exclude": [
       "/sitemap.xml", 
       "/img/*.{png,jpg,gif}", 
-      "/css/*"
+      "/css/*",
+      "/blog1.html"
     ]
   }
 }
