@@ -1,4 +1,10 @@
 /* ↓↓全体のスタイル↓↓ */
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* 横スクロールを防止 */
+}
+
 h1 {
     font-weight: 600; 
 }
@@ -289,6 +295,7 @@ body {
   .container {
       flex-direction: column;
       padding: 10px;
+      margin-right: 10px;
   }
 
   .main, .side-content {
