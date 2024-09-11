@@ -1,8 +1,8 @@
 /* ↓↓全体のスタイル↓↓ */
-body, html {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden; /* 横スクロールを防止 */
+html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* 横スクロールを防止 */
 }
 
 h1 {
