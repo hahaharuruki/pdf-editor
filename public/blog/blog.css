@@ -286,39 +286,51 @@ body {
 
 /* レスポンシブデザイン（スマホ・縦画面タブレット用） */
 @media (max-width: 768px) {
-    .container {
-        flex-direction: column; /* 縦方向に配置 */
-    }
+  .container {
+      flex-direction: column;
+      padding: 10px;
+  }
 
-    .main, .side-content {
-        width: 100%; /* 両方とも全幅で表示 */
-    }
+  .main, .side-content {
+      width: 100%; 
+      padding: 10px;
+  }
 
-    .side-content {
-        margin-top: 40px; /* コンテンツ下に配置 */
-    }
+  .side-content {
+      margin-top: 40px;
+      padding: 10px; 
+  }
 
-    /* サイドバーの目次を上部に表示したくない場合は非表示に */
-    .widget-toc {
-        position: static;
-        margin-bottom: 20px;
-    }
+  /* サイドバーの目次を上部に表示したくない場合は非表示に */
+  .widget-toc {
+      position: static;
+      margin-bottom: 20px;
+      padding: 10px;
+  }
 
-    .sidebar {
-        float: none;
-        height: auto;
-    }
+  .sidebar {
+      float: none;
+      height: auto;
+      padding: 10px;
+  }
 
-    .md-flex {
-        display: flex;
-    }
-    
-    .md-justify-between {
-        justify-content: space-between;
-    }
-    
-    .copyright {
-        text-align: left;
-    }
+  .md-flex {
+      display: flex;
+      padding: 10px;
+  }
+  
+  .md-justify-between {
+      justify-content: space-between;
+      padding: 10px;
+  }
+  
+  .copyright {
+      text-align: left;
+      padding: 5px;
+  }
+
+  .footer, .header {
+      padding: 5px;
+  }
 }
 
