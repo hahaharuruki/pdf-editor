@@ -18,15 +18,3 @@ document.addEventListener("DOMContentLoaded", function() {
   tocList.style.display = "none";
   tocArrow.textContent = "▼"; // 初期状態の矢印を下向きに
 });
-
-window.addEventListener('load', function() {
-  var sidebar = document.querySelector('.sidebar');
-  var pageHeight = document.body.scrollHeight;
-  sidebar.style.height = pageHeight + 'px';
-});
-
-window.addEventListener('resize', function() {
-  var sidebar = document.querySelector('.sidebar');
-  var pageHeight = document.body.scrollHeight;
-  sidebar.style.height = pageHeight + 'px';
-});

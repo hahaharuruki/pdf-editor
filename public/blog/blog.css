@@ -1,206 +1,324 @@
-/* 全体コンテナ */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 50px;
-  font-family: 'Roboto', sans-serif;
-}
-
+/* ↓↓全体のスタイル↓↓ */
 h1 {
-  font-weight: 600; 
+    font-weight: 600; 
 }
-
+  
 h2 {
-  font-size: 1.5rem; 
-  font-weight: 600;   
-  margin-top: 0px;
-  margin-bottom: 0px;
+    font-size: 1.5rem; 
+    font-weight: 600;   
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
-
+  
 h3 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-top: 50px;
-  margin-bottom: 20px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 50px;
+    margin-bottom: 20px;
 }
-
+  
 h4 {
-  font-size: 1.5rem; 
-  font-weight: 600; 
-  margin-top: 50px;
-  margin-bottom: 0px;
+    font-size: 1.5rem; 
+    font-weight: 600; 
+    margin-top: 50px;
+    margin-bottom: 0px;
 }
-
+  
 p {
-  line-height: 30px;
+    line-height: 30px;
 }
-
+  
 li a {
-  line-height: 30px;
-  color: #0056b3;
+    line-height: 30px;
+    color: #0056b3;
 }
-
+  
 section {
-  margin-top: 100px;
-}
-
-/* パンくずリストのスタイル */
-.breadcrumb {
-  margin-bottom: 20px;
-}
-
-.breadcrumb a {
-  color: #0056b3;
-}
-
-/* メインコンテンツ */
-.main-content {
-  width: 70%;
-  float: left;
-}
-
-/* タイトル */
-.title {
-  font-size: 2rem;
-  margin-bottom: 20px;
-}
-
-/* 目次セクション */
-.toc {
-  border: 1px solid #ddd;
-  padding: 15px; 
-  background-color: #f8f9fa; 
-  border-radius: 8px;
-  margin-bottom: 20px;
-}
-
-.toc-header {
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.toc ul,
-.widget-toc ul,
-.related-pages ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.toc ul li a, 
-.widget-toc ul li a,
-.black-link {
-  text-decoration: none;
-  color: #000000;
-}
-
-.toc ul li a:hover {
-  text-decoration: underline;
-}
-
-.widget-toc ul li a:hover {
-  text-decoration: underline;
-}
-
-.black-link:hover {
-  text-decoration: underline;
-}
-
-.toc-inner {
-  margin-left: 20px;
-}
-
-/* サイドバーのスタイル */
-.sidebar {
-  width: 28%;
-  float: right;
-  margin-top: 20px;
-  height: 100vh;
-}
-
-/* 関連ページセクション */
-.related-pages {
-  border: 1px solid #ddd;
-  padding: 15px; 
-  background-color: #f8f9fa; 
-  border-radius: 8px; 
-  margin-bottom: 20px;
-}
-
-.widget-toc {
-  position: sticky;
-  top: 20px;
-  border: 1px solid #ddd;
-  padding: 15px; 
-  background-color: #f8f9fa; 
-  border-radius: 8px; 
-  margin-bottom: 20px;
-}
-
-/* 文中の赤字テキスト */
-.red-text {
-  color: #dc3545;
-}
-
-/* メインコンテンツとサイドバーの間に余白を追加 */
-.content::after {
-  content: "";
-  display: table;
-  clear: both;
-  margin-right: 20px;
-}
-
-/* タイトルのスタイル（目次や関連ページなど） */
-.related-pages h2, .widget-toc h2 {
-  margin-top: 0; 
-  margin-bottom: 0px; 
+    margin-top: 100px;
 }
 
 img {
-  max-width: 100%; 
-  height: auto;
+    max-width: 100%; 
+    height: auto;
 }
-
+  
 table {
-  width: 100%;
-  border-collapse: collapse;
+    width: 100%;
+    border-collapse: collapse;
 }
-
+  
 td {
-  padding: 8px;
-  border: 1px solid #ddd;
+    padding: 8px;
+    border: 1px solid #ddd;
 }
-
+  
 td:first-child {
-  font-weight: bold;
-  white-space: nowrap;
-}
-
-/* タイトルに左側の色付きボーダーを追加 */
-.title-with-accent {
-  border-left: 6px solid #DE8A4A;
-  padding-left: 10px;
-  line-height: 1.2;
+    font-weight: bold;
+    white-space: nowrap;
 }
 
 /* 表の偶数行に背景色を追加 */
 .table-striped tr:nth-child(even) {
-  background-color: #e8f1fa; /* 偶数行の背景色 */
+    background-color: #e8f1fa; /* 偶数行の背景色 */
 }
-
-/* 表の奇数行の背景色 */
+  
+  /* 表の奇数行の背景色 */
 .table-striped tr:nth-child(odd) {
-  background-color: #ffffff; /* 奇数行の背景色（必要に応じて色を変更） */
+    background-color: #ffffff; /* 奇数行の背景色 */
 }
 
-/* レスポンシブデザイン（スマホ用） */
+/* 文中の赤字テキスト */
+.red-text {
+    color: #dc3545;
+}
+
+/* タイトルに左側の色付きボーダーを追加 */
+.title-with-accent {
+    border-left: 6px solid #DE8A4A;
+    padding-left: 10px;
+    line-height: 1.2;
+}
+/* ↑↑全体のスタイル↑↑ */
+
+
+.breadcrumb {
+    margin-bottom: 20px;
+}
+
+.breadcrumb a {
+    color: #0056b3;
+}
+
+body {
+    margin: 0;
+}
+
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px;
+    font-family: 'Roboto', sans-serif;
+    flex-direction: row;
+}
+
+.main{
+    flex:2;
+    width: 70%;
+    float: left;
+    padding: 20px;
+}
+
+/* 記事タイトル */
+.title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* タイトルに左側の色付きボーダーを追加 */
+.title-with-accent {
+    border-left: 6px solid #DE8A4A;
+    padding-left: 10px;
+    line-height: 1.2;
+}
+
+/* ↓↓目次セクション↓↓ */
+.toc {
+    border: 1px solid #ddd;
+    padding: 15px; 
+    background-color: #f8f9fa; 
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.toc-header {
+    cursor: pointer;
+    font-weight: bold;
+}
+  
+.toc ul,
+.widget-toc ul,
+.related-pages ul {
+    list-style-type: none;
+    padding: 0;
+}
+  
+.toc ul li a, 
+.widget-toc ul li a,
+.black-link {
+    text-decoration: none;
+    color: #000000;
+}
+  
+.toc ul li a:hover {
+    text-decoration: underline;
+}
+  
+.widget-toc ul li a:hover {
+    text-decoration: underline;
+}
+  
+.black-link:hover {
+    text-decoration: underline;
+}
+  
+.toc-inner {
+    margin-left: 20px;
+}
+/* ↑↑目次セクション↑↑ */
+
+/* ↓↓サイドコンテンツ↓↓ */
+.side-content{
+    flex:1;
+}
+
+/* サイドバー全体　*/
+.sidebar{
+    flex:1;
+    float: right;
+    margin-top: 20px;
+    height: 100%;
+}
+
+/* タイトルのスタイル */
+.related-pages h2, .widget-toc h2 {
+    margin-top: 0; 
+    margin-bottom: 0px; 
+}
+
+/* 関連ページセクション */
+.related-pages {
+    border: 1px solid #ddd;
+    padding: 15px; 
+    background-color: #f8f9fa; 
+    border-radius: 8px; 
+    margin-bottom: 20px;
+}
+
+/* サイドバー目次 */
+.widget-toc{
+    top:20px;
+    position:sticky;
+    border: 1px solid #ddd;
+    padding: 15px; 
+    background-color: #f8f9fa; 
+    border-radius: 8px; 
+    margin-bottom: 20px;
+}
+/* ↑↑サイドコンテンツ↑↑ */
+
+/* ↓↓ヘッダーコンテンツ↓↓ */
+.header {
+    padding: 2rem;
+    font-size: 15px;
+    color: #9ca3af;
+    background: #1d1e22;
+}
+
+.header ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+  
+.header a {
+    color: #9ca3af;
+    text-decoration: none;
+}
+  
+.header a:hover {
+    color: #fff;
+}
+/* ↑↑ヘッダーコンテンツ↑↑ */
+
+/* ↓↓フッターコンテンツ↓↓ */
+.footer {
+    padding: 2rem;
+    font-size: 15px;
+    color: #9ca3af;
+    background: #1d1e22;
+}
+
+.footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+  
+.footer a {
+    color: #9ca3af;
+    text-decoration: none;
+}
+  
+.footer a:hover {
+    color: #fff;
+}
+  
+.flex {
+    display: flex;
+}
+  
+.footer hr {
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #35363b;
+}
+  
+.footer__navi {
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+  
+.footer__navi li {
+    display: inline-block;
+}
+  
+.footer__navi li:not(:last-child) {
+    margin-right: 16px;
+}
+  
+.footer__logo {
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+/* ↑↑フッターコンテンツ↑↑ */
+
+/* レスポンシブデザイン（スマホ・縦画面タブレット用） */
 @media (max-width: 768px) {
-  .main-content, .sidebar {
-      width: 100%;
-      float: none;
-      margin: 0;
-  }
+    .container {
+        flex-direction: column; /* 縦方向に配置 */
+    }
 
-  .sidebar {
-      margin-top: 40px;
-  }
+    .main, .side-content {
+        width: 100%; /* 両方とも全幅で表示 */
+    }
+
+    .side-content {
+        margin-top: 40px; /* コンテンツ下に配置 */
+    }
+
+    /* サイドバーの目次を上部に表示したくない場合は非表示に */
+    .widget-toc {
+        position: static;
+        margin-bottom: 20px;
+    }
+
+    .sidebar {
+        float: none;
+        height: auto;
+    }
+
+    .md-flex {
+        display: flex;
+    }
+    
+    .md-justify-between {
+        justify-content: space-between;
+    }
+    
+    .copyright {
+        text-align: left;
+    }
 }
+
