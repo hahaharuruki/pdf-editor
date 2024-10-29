@@ -8,7 +8,7 @@ import ImageToPdf from '../views/ImageToPdf.vue';
 import WatermarkPdf from '../views/WatermarkPdf.vue';
 import RotatePdf from '../views/RotatePdf.vue';
 import PageNumberPdf from '../views/PageNumberPdf.vue';
-// import SignPdf from '../views/SignPdf.vue';
+import SignPdf from '../views/SignPdf.vue';
 import PrivacyPolicy from '@/views/PrivacyPolicy.vue';
 import FaqPage from '@/views/FaqPage.vue';
 import ContactPage from '@/views/ContactPage.vue';
@@ -61,11 +61,11 @@ const routes = [
     name: 'PageNumberPdf', 
     component: PageNumberPdf 
   },
-  // { 
-  //   path: '/sign-pdf', 
-  //   name: 'SignPdf', 
-  //   component: SignPdf 
-  // }
+  { 
+    path: '/sign-pdf', 
+    name: 'SignPdf', 
+    component: SignPdf 
+  },
   {
     path: '/privacy-policy',
     name: 'PrivacyPolicy',
