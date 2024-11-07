@@ -2,6 +2,8 @@ document.addEventListener("DOMContentLoaded", function() {
   const tocHeader = document.querySelector(".toc-header");
   const tocList = document.querySelector(".toc ul");
   const tocArrow = tocHeader.querySelector("span");
+  const sections = document.querySelectorAll('section[id]');
+  const tocLinks = document.querySelectorAll('.widget-toc a[href^="#"]');
 
   // 目次の開閉機能
   tocHeader.addEventListener("click", function() {

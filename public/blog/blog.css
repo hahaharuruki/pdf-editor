@@ -10,21 +10,21 @@ h1 {
 }
   
 h2 {
-    font-size: 1.5rem; 
+    font-size: 1.8rem; 
     font-weight: 600;   
     margin-top: 0px;
     margin-bottom: 0px;
 }
   
 h3 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 600;
     margin-top: 50px;
     margin-bottom: 20px;
 }
   
 h4 {
-    font-size: 1.5rem; 
+    font-size: 1.4rem; 
     font-weight: 600; 
     margin-top: 50px;
     margin-bottom: 0px;
@@ -84,6 +84,17 @@ td:first-child {
     padding-left: 10px;
     line-height: 1.2;
 }
+
+/* 小さいタイトルに左側の色付きボーダーを追加 */
+.title-with-accent-small {
+    border-left: 6px solid #deb887;
+    padding-left: 10px;
+    line-height: 1.2;
+}
+
+.link {
+    color: #1558d6;
+}
 /* ↑↑全体のスタイル↑↑ */
 
 
@@ -120,13 +131,6 @@ body {
 .title {
     font-size: 2rem;
     margin-bottom: 20px;
-}
-
-/* タイトルに左側の色付きボーダーを追加 */
-.title-with-accent {
-    border-left: 6px solid #DE8A4A;
-    padding-left: 10px;
-    line-height: 1.2;
 }
 
 /* ↓↓目次セクション↓↓ */

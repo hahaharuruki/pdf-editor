@@ -33,7 +33,12 @@ export default {
           excerpt: 'プレビューで全て完結!!Macの標準機能でPDF編集！インストール不要でセキュリティも強固な方法を紹介します。',
           link: 'https://www.ibiza-pdf.com/blog/blog2.html'
         },
-        // さらに新しいページのカードを追加する場合には、ここに追加していく
+        { 
+          id: 3, 
+          title: '【Adobe】【PDF】本当に無料!?どこまで無料!?どう違う!?AdobeのPDF編集、閲覧ソフトを徹底解説!!', 
+          excerpt: 'AdobeのPDF編集や閲覧ができる製品の違い、無料でどこまでできるのか、どれを使えばいいのか徹底比較を行います！',
+          link: 'https://www.ibiza-pdf.com/blog/blog3.html'
+        },
       ],
     };
   },
