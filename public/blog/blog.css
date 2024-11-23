@@ -34,6 +34,14 @@ p {
     line-height: 30px;
 }
   
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
 li a {
     line-height: 30px;
     color: #0056b3;
@@ -220,10 +228,11 @@ body {
 
 /* ↓↓ヘッダーコンテンツ↓↓ */
 .header {
-    padding: 2rem;
+    padding: 1rem;
     font-size: 15px;
-    color: #9ca3af;
-    background: #1d1e22;
+    color: #fff;
+    background: #333;
+    font-family: 'Roboto', sans-serif;
 }
 
 .header ul {
@@ -233,12 +242,17 @@ body {
 }
   
 .header a {
-    color: #9ca3af;
+    color: #fff;
     text-decoration: none;
 }
   
 .header a:hover {
-    color: #fff;
+    color: #333;
+}
+
+.header-logo{
+    display: flex;              /* フレックスボックスを使う */
+    justify-content: center;    /* 子要素を水平方向に中央揃え */
 }
 /* ↑↑ヘッダーコンテンツ↑↑ */
 
@@ -246,8 +260,9 @@ body {
 .footer {
     padding: 2rem;
     font-size: 15px;
-    color: #9ca3af;
-    background: #1d1e22;
+    color: #fff;
+    background: #333;
+    font-family: 'Roboto', sans-serif;
 }
 
 .footer ul {
@@ -257,12 +272,12 @@ body {
 }
   
 .footer a {
-    color: #9ca3af;
+    color: #fff;
     text-decoration: none;
 }
   
 .footer a:hover {
-    color: #fff;
+    color: #333;
 }
   
 .flex {
