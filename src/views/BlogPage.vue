@@ -45,6 +45,7 @@ export default {
       selectedCategory: null, // 選択されたカテゴリ（デフォルトはnull）
       categories: [
         { name: "PDF編集" },
+        { name: "SNS" },
         { name: "AI" },
       ],
       posts: [
@@ -98,6 +99,11 @@ export default {
   transform: scale(1.03);
   transition: transform 0.2s;
 }
+
+.col-md-4 {
+  margin-bottom: 10px;
+}
+
 .bg-primary {
   background-color: #007bff !important;
 }
